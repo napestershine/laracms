@@ -13,4 +13,10 @@ class CategoryTest extends TestCase
         ]);
         $this->visit('/category')->see('Movies');
     }
+
+    public function testWeSeeCategoryForm()
+    {
+        $this->visit('/category/create')
+            ->see('Create a category');
+    }
 }
