@@ -6,11 +6,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CategoryTest extends TestCase
 {
-    public function testCategoriesTable()
+    public function testWeSeeAListOfCategory()
     {
         factory(App\Category::class)->create([
             'name' => 'Movies',
         ]);
-        $this->seeInDatabase('category', ['name'=> 'Movies']);
+        $this->visit('/category')->see('Movies');
     }
 }
