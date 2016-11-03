@@ -36,7 +36,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $link = new \App\Category;
+        $link->name = $request->name;
+        $link->description = $request->description;
+        $link->save();
+        return redirect('/');
     }
 
     /**

@@ -27,4 +27,13 @@ class CategoryTest extends TestCase
             ->see('The name field is required')
             ->see('The description field is required');
     }
+
+    public function testSubmitCategoryToDb()
+    {
+        $this->visit('/category/create')
+            ->type('Movies', 'name')
+            ->type('My description', 'description')
+            ->press('Submit')
+            ->seeInDatabase('category', ['name' => 'Movies']);
+    }
 }
