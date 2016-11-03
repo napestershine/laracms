@@ -2,9 +2,22 @@
 
 @section('content')
     <h1>Categories</h1>
-    <ul>
+    <table class="table-bordered">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
         @foreach($categories as $category)
-            <li>{{ $category->name }}</li>
+            <tr>
+                <td>{{ $category->id }}</td>
+                <td>{{ $category->name }}</td>
+                <td>{{ $category->description }}</td>
+                <td>
+                    <a href="/category/{{ $category->id }}">Show</a>
+                </td>
+            </tr>
         @endforeach
-    </ul>
+    </table>
 @endsection
