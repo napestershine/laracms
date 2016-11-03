@@ -8,6 +8,9 @@ class SeederTest extends TestCase
 {
     public function testCategoriesTable()
     {
-        $this->seeInDatabase('cms', ['name'=> 'Movies']);
+        factory(App\Category::class)->create([
+            'name' => 'Movies',
+        ]);
+        $this->seeInDatabase('category', ['name'=> 'Movies']);
     }
 }
