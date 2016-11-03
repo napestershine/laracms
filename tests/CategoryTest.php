@@ -19,4 +19,12 @@ class CategoryTest extends TestCase
         $this->visit('/category/create')
             ->see('Create a category');
     }
+
+    public function testCategoryFormValidation()
+    {
+        $this->visit('/category/create')
+            ->press('Submit')
+            ->see('The name field is required')
+            ->see('The description field is required');
+    }
 }
