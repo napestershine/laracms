@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -47,10 +48,10 @@ class CategoryController extends Controller
                 ->withErrors($validator);
         }
 
-        $link = new \App\Category;
-        $link->name = $request->name;
-        $link->description = $request->description;
-        $link->save();
+        $category = new \App\Category;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
         return redirect('/');
     }
 
@@ -76,7 +77,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = \App\Category::findOrFail($id);
+
+
+        return view('admin/category/edit', compact(['category']));
     }
 
     /**
@@ -88,7 +92,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $category = new \App\Category;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->update($category);
+        return redirect()->back();
     }
 
     /**
@@ -99,6 +118,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->back();
     }
 }
