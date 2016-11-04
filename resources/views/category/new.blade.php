@@ -14,19 +14,19 @@
                     </ul>
                 </div>
             @endif
-            <form action="/category" method="post">
-                {!! csrf_field() !!}
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description"
-                              placeholder="description"></textarea>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            {!! Form::open(['url'=>url('category/store'), 'method'=>'post']) !!}
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description"
+                          placeholder="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection
