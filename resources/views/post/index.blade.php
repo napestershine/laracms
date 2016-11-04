@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Categories</h1>
+    <h1>Posts</h1>
     <a href="/post/create" class="btn btn-primary">Add </a>
     <table class="table-bordered">
         <tr>
