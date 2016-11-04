@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1>Create a category</h1>
+            <h1>Create a post</h1>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Whoops! Something went wrong!</strong>
@@ -14,11 +14,11 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::open(['url'=>url('/category'), 'method'=>'post']) !!}
+            {!! Form::open(['url'=>url('/post'), 'method'=>'post']) !!}
 
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>

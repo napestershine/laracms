@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post/new');
     }
 
     /**
@@ -35,7 +35,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'description' => 'required|max:500',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $post = new \App\Post;
+        $post->name = $request->name;
+        $post->description = $request->description;
+        $post->save();
+        return redirect('/post');
     }
 
     /**
@@ -46,7 +61,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = \App\Post::findOrFail($id);
+
+
+        return view('post/show', compact(['post']));
     }
 
     /**
@@ -57,7 +75,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = \App\Post::findOrFail($id);
+
+
+        return view('post/edit', compact(['post']));
     }
 
     /**
@@ -69,7 +90,20 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'description' => 'required|max:500',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $data = $request->all();
+        $post = \App\Post::findOrFail($id);
+        $post->update($data);
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +114,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect('/post');
     }
 }
