@@ -47,7 +47,7 @@ class PostController extends Controller
         }
 
         $post = new \App\Post;
-        $post->name = $request->name;
+        $post->title = $request->title;
         $post->description = $request->description;
         $post->save();
         return redirect('/post');
