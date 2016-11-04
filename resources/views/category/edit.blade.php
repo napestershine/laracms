@@ -29,9 +29,7 @@
             {!! Form::close() !!}
         </div>
         <div class="row">
-            <form action="/category/{{ $category->id }}" method="delete">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+            <a href="/category/{{ $category->id }}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 @endsection
