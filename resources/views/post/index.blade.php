@@ -2,21 +2,21 @@
 
 @section('content')
     <h1>Categories</h1>
-    <a href="/category/create" class="btn btn-primary">Add </a>
+    <a href="/post/create" class="btn btn-primary">Add </a>
     <table class="table-bordered">
         <tr>
             <th>id</th>
-            <th>Name</th>
+            <th>Title</th>
             <th>Description</th>
             <th>Action</th>
         </tr>
-        @foreach($categories as $category)
+        @foreach($posts as $post)
             <tr>
-                <td>{{ $category->id }}</td>
-                <td>{{ $category->name }}</td>
-                <td>{{ $category->description }}</td>
+                <td>{{ $post->id }}</td>
+                <td>{{ $post->title }}</td>
+                <td>{{ $post->description }}</td>
                 <td>
-                    <a href="/category/{{ $category->id }}">Show</a>
+                    <a href="/post/{{ $post->id }}">Show</a>
                 </td>
             </tr>
         @endforeach

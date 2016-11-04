@@ -13,4 +13,12 @@ class SeederTest extends TestCase
         ]);
         $this->seeInDatabase('category', ['name'=> 'Movies']);
     }
+
+    public function testPostsTable()
+    {
+        factory(App\Post::class)->create([
+            'title' => 'Movies',
+        ]);
+        $this->seeInDatabase('posts', ['title'=> 'Movies']);
+    }
 }
