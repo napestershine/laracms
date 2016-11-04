@@ -29,7 +29,9 @@
             {!! Form::close() !!}
         </div>
         <div class="row">
-            <a href="/category/{{ $category->id }}" class="btn btn-danger">Delete</a>
+            {!! Form::open(['url'=>url('/category/'.$category->id), 'method'=>'DELETE']) !!}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         </div>
     </div>
 @endsection
