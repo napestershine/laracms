@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::open(['url'=>url('category/store'), 'method'=>'post']) !!}
+            {!! Form::open(['url'=>url('/category'), 'method'=>'post']) !!}
 
             <div class="form-group">
                 <label for="name">Name</label>
