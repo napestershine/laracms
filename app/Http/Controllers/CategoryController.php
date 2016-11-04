@@ -102,9 +102,9 @@ class CategoryController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-
+$data = $request->all();
         $category = \App\Category::findOrFail($id);
-        $category->update($request->all());
+        $category->update($data);
         return redirect()->back();
     }
 
