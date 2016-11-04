@@ -28,3 +28,10 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
         'description' => $faker->paragraph,
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'description' => $faker->paragraph,
+    ];
+});
