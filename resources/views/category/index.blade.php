@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Categories</h1>
+    <a href="/category/create" class="btn btn-primary">Add </a>
     <table class="table-bordered">
         <tr>
             <th>id</th>
