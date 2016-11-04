@@ -14,8 +14,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="/category/{{ $category->id }}" method="post">
-                {!! csrf_field() !!}
+            {!! Form::open(['url'=>url('/category/'.$category->id), 'method'=>'patch']) !!}
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name"
@@ -27,7 +26,7 @@
                               placeholder="description">@if(isset($category->description) && $category->description!=null){{ $category->description }}@endif</textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            {!! Form::close() !!}
         </div>
         <div class="row">
             <form action="/category/{{ $category->id }}" method="delete">
